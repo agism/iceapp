@@ -1,24 +1,21 @@
-%h2 All Movies
-
-%table#movies
-	%thead
-		%tr
-			%th Movie Title
-			%th Rating
-			%th Release Date
-			%th More Info
+.raw-fluid
+	.span12
+		%h2 All Movies
+		%table{:class => 'table table-hover'}
+			%thead
+				%tr
+					%th Movie Title
+					%th Rating
+					%th Release Date
+					%th More Info
+		
+			%tbody
+				-	@movies.each do |movie|
+					%tr
+						%td= movie.title
+						%td= movie.rating
+						%td= movie.release_date.strftime("%B %d, %Y")
+						%td= link_to "More about #{movie.title}", movie_path(movie)	
 			
-	%tbody
-		- 	@movies.each do |movie|
-			%tr
-				%td= movie.title
-				%td= movie.rating
-				%td= movie.release_date.strftime("%B %d, %Y")
-				%td= link_to "More about #{movie.title}", movie_path(movie)
-	
-
-:javascript
-	document.write("<p>Javascript inside Haml</p>")
-	alert("this is my javascript")
-			
-			
+		
+		= link_to 'Add new movie', new_movie_path

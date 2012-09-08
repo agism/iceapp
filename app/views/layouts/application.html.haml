@@ -1,0 +1,12 @@
+%head
+	%title Iceapp
+	= stylesheet_link_tag "styles", :media => "all"
+	= stylesheet_link_tag "application", :media => "all"
+	= javascript_include_tag "application"
+	= csrf_meta_tags
+
+%body
+	:javascript
+		document.write("Java-title-script!!");
+		
+	= yield
